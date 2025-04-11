@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prendre un rendez-vous{% endblock %}
+
+{% block body %}
+<div class="max-w-xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Formulaire de rendez-vous</h1>
+
+    {{ form_start(form) }}
+    
+    <div class="space-y-4">
+        <div>
+            {{ form_label(form.date, 'Date et heure') }}
+            {{ form_widget(form.date, {'attr': {'class': 'w-full p-2 border border-gray-300 rounded'}}) }}
+            {{ form_errors(form.date) }}
+        </div>
+
+        <div>
+            {{ form_label(form.Motif) }}
+            {{ form_widget(form.Motif, {'attr': {'class': 'w-full p-2 border border-gray-300 rounded'}}) }}
+            {{ form_errors(form.Motif) }}
+        </div>
+
+        <div>
+            {{ form_label(form.Status) }}
+            {{ form_widget(form.Status, {'attr': {'class': 'w-full p-2 border border-gray-300 rounded'}}) }}
+            {{ form_errors(form.Status) }}
+        </div>
+
+        <div>
+            {{ form_label(form.Specialite) }}
+            {{ form_widget(form.Specialite, {'attr': {'class': 'w-full p-2 border border-gray-300 rounded'}}) }}
+            {{ form_errors(form.Specialite) }}
+        </div>
+
+        {# Décommente ceci si tu actives le champ 'patient' #}
+        {# 
+        <div>
+            {{ form_label(form.patient) }}
+            {{ form_widget(form.patient, {'attr': {'class': 'w-full p-2 border border-gray-300 rounded'}}) }}
+            {{ form_errors(form.patient) }}
+        </div>
+        #}
+
+        <div class="text-center mt-6">
+            {{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 text-white font-semibold py-2 px-6 rounded hover:bg-blue-600'}}) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FiliereController!{% endblock %}
+{% block bodyTitle %}Liste des Filiere{% endblock %} 
+
+{% block body %}
+ <div class="flex justify-end">
+        <a href="{{path("listeRendezVous")}}" class=" bg-blue-500 hover:bg-blue-700 text-center text-white font-bold w-28 h-10 mx-2 p-2 rounded-lg">Ajouter</a>
+        
+    </div>
+        <table class="w-full border-collapse border border-gray-300 mt-2">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="border border-gray-300 p-2 text-left">DAte</th>
+                    <th class="border border-gray-300 p-2 text-left">Specialite</th>
+                    <th class="border border-gray-300 p-2 text-left">Status</th>
+                    <th class="border border-gray-300 p-2 text-left">VoirPLus</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for rv in rendezvous %}
+                <tr>
+                    <td class="border border-gray-300 p-2"> {{ rv.date ? rv.date|date('d/m/Y H:i') : '' }}</td>
+                    <td class="border border-gray-300 p-2">{{rv.specialite.value}}</td>
+                    <td class="border border-gray-300 p-2">{{rv.status.value}}</td>
+                   <td class="border border-gray-300 p-2 text-center">
+    <a href="{{ path('app_rendezvous_add', { id: rv.id }) }}" class="text-blue-600 hover:text-blue-800">
+        👁️
+    </a>
+</td>
+
+                {% endfor %}
+             
+            </tbody>
+        </table>
+        <div class="navigation mt-5">
+    {{ knp_pagination_render(rendezvous) }}
+</div>
+{% endblock %}
